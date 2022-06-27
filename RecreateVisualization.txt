@@ -1,0 +1,14 @@
+I.Recreate Data : 
+	- In my code, i'm using the if clause for both 4 motion sensors ( which means if there are motion, the return will be "active" ( 1 ), other will be "inactive" ( 0 ),
+so that the database didn'nt contain "Null" value. The main reason that create dirty is the wrong value of intake "active " or "inactive" ( because of the quality of sensor and some other factor,
+in some case the result should be "active" base on my calculation but the return data is "Inactive").
+	- In order to increase the accuracy of the result when it comes to the final step that decide to "alarm" or"not alarm" when detect the stranger, I've use the excel filter function to find out
+all the line that contains 1 "active" factor and 3 "inactive" factor that didn't repeat itself ( because the sensor are unstable and it usually comes to a random "active" input from 1 of these 4 ).
+It contains ( 0 1 0 0 , 1 0 0 0, 0 0 1 0, 0 0 0 1 ). When finding out all of the lines with that pattern, I try to look for it's record time, if it is continuous => clean data, or else it must be dirty
+data and I replace it with ( 0 0 0 0 , all inactive ).
+
+II.Recreate Data visualization : 
+	1/ Using tableu and import the csv file that contains recorded data of 4 sensors with datetime.
+	2/ Open the "Sheet1" in Tableu in order to ready for visualization creating.
+	3/ Drag "motion1","motion2","motion3" and "motion4" values to "Rows" values and "datetime" value to "Column" value. Set the motions value to "sum" and change the datetime from "YEAR" (default) into "Exact date".
+	4/ Choosing the "line discrete" visualization and recognize the repeating pattern from the graph.
